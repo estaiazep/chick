@@ -152,7 +152,7 @@ body {
     position: relative; 
     width: 500px;
     height: 700px; 
-    background-image: url("stenka.png");
+    background-image: url(stenka.png);
     background-repeat: no-repeat; 
 background-position: center center;
        background-size: cover; 
