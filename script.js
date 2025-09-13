@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
      "306.png"
     ],
   hardcore: [
-    "280.png",
+     "280.png",
      "163.png",
      "245.png",
      "222.png",
