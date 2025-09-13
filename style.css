@@ -1,0 +1,609 @@
+/* ================== GLOBAL RESET ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --safe: max(env(safe-area-inset-bottom), 16px);
+}
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #47413d;
+    color: #fff;
+}
+
+/* ================== TITLES ================== */
+.title {
+    display: flex;
+    gap: 8px;
+    margin: 18px auto 10px;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.t-big {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+.t-accent {
+    font-size: 40px;
+    font-weight: 900;
+    color: #ff3b2f;
+}
+.t-num {
+    font-size: 44px;
+    font-weight: 900;
+    color: #ff3b2f;
+    line-height: 1;
+}
+.t-chick {
+    font-size: 28px;
+}
+
+/* ================== MODES ================== */
+.modes {
+    display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 50px;  
+   
+    
+}
+.mode {
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 900;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+.m-easy {
+  background: #1f8f5a;
+  box-shadow: 0 4px 12px rgba(47, 255, 123, 0.4); 
+}
+.m-easy:hover,
+.m-easy:active {
+  background: #27b36f; /* светлее */
+  box-shadow: 0 6px 16px rgba(47, 255, 123, 0.6);
+}
+
+/* MEDIUM */
+.m-medium {
+  background: #3b6edc;
+  box-shadow: 0 4px 12px rgba(59, 110, 220, 0.4);
+}
+.m-medium:hover,
+.m-medium:active {
+  background: #4d82f2;
+  box-shadow: 0 6px 16px rgba(59, 110, 220, 0.6);
+}
+
+/* HARD */
+.m-hard {
+  background: #9a642c;
+  box-shadow: 0 4px 12px rgba(154, 100, 44, 0.4);
+}
+.m-hard:hover,
+.m-hard:active {
+  background: #b2743c;
+  box-shadow: 0 6px 16px rgba(154, 100, 44, 0.6);
+}
+
+/* HARDCORE */
+.m-hardcore {
+  background: #b87425;
+  box-shadow: 0 4px 12px rgba(184, 116, 37, 0.4);
+}
+.m-hardcore:hover,
+.m-hardcore:active {
+  background: #d48430;
+  box-shadow: 0 6px 16px rgba(184, 116, 37, 0.6);
+}
+
+.mode.active {
+    outline: 3px solid #ffffff88;
+}
+
+
+#gate {
+ background: #2f2b28;
+  background-size: cover;
+
+
+}
+
+#app{
+     margin-bottom: 1000px;
+   background: #2f2b28;
+}
+
+.lalka1{
+ position: absolute;
+    left: 50%;
+    top: 0,5px;
+    bottom: -75px;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 80px;
+     z-index: 2;
+    border-radius: 10px;
+    background: #47413d;
+    box-shadow:  0 4px 10px rgba(20, 18, 16, 0.5);
+}
+
+
+#gate,
+#app {
+   
+  padding-bottom: 300px; 
+}
+
+
+
+
+/* ================== ROAD (BACKGROUND) ================== */
+
+
+.road, .road--app{ 
+    position: relative; 
+    width: 500px;
+    height: 700px; 
+    background-image: url("file:///C:/Users/Yluan/OneDrive/Pictures/lala22222222.png");
+    background-repeat: no-repeat; 
+background-position: center center;
+       background-size: cover; 
+       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+       
+        margin: 0 auto; 
+        padding-bottom: 100px;
+}
+
+
+
+
+.road::before, .road::after {
+     content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.6), transparent);
+}
+.road::before {
+    left: 0px;
+}
+.road::after {
+    right: -60px;
+}
+
+/* ================== BARRIER ================== */
+.barrier {
+    position: relative;
+    left: 50%;
+    top: 0,5px;
+    transform: translateX(-50%);
+    width: 105%;
+    height: 60px;
+   z-index: 1;
+    border-radius: 10px;
+    background: repeating-linear-gradient(
+        135deg,
+        #f6b10a 0 20px,
+        #3f3b38 20px 40px
+    );
+    box-shadow: inset 0 -8px 0 rgba(0, 0, 0, 0.18),
+                0 6px 0 rgba(0, 0, 0, 0.18);
+                
+    pointer-events: none;
+    
+   
+}
+
+.barrier::before {
+    left: -12px;
+   
+}
+.barrier::after {
+    right: -12px;
+    
+}
+.lalka{
+ position: absolute;
+    left: 50%;
+    top: 0,5px;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 170px;
+     
+    border-radius: 10px;
+    background: #47413d;
+     box-shadow:  0 4px 10px rgba(20, 18, 16, 0.5);
+}
+/* ================== LOGIN SCREEN ================== */
+.road--login .auth-card {
+    
+    position: absolute;
+    left: 50%;
+    top: 28%;
+    transform: translateX(-50%);
+    width: min(420px, 86%);
+    padding: 18px 16px 16px;
+    text-align: center;
+    background: #2f2b28;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.auth-card h2 {
+    font-size: 28px;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+.auth-input {
+    background: #22201e;
+    border: 1px solid #4c4743;
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    outline: none;
+}
+.auth-input::placeholder {
+    color: #bfbab6;
+}
+.auth-error {
+    color: #ff8c8c;
+    font-weight: 800;
+}
+
+/* ================== BUTTONS ================== */
+
+.lalka01{
+     display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-weight: 900;
+    text-decoration: none;
+}
+.btn-primary {
+    background: #3b6edc;
+    color: #fff;
+    border: 0;
+}
+.btn-secondary {
+    background: #9a642c;
+    color: #fff;
+}
+.btn-buy {
+    background: #b87425;
+    color: #fff;
+}
+.btn-next {
+    border: 0;
+    background: #1f8f5a;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+.auth-form .btn {
+    width: 100%;
+}
+@media (min-width: 520px) {
+    .auth-form .btn {
+        width: auto;
+    }
+    .auth-form {
+        gap: 12px;
+    }
+}
+
+/* ================== COINS & CHICKEN ================== */
+.login-coin {
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    width: 46%;
+    filter: drop-shadow(0 10px 0 rgba(0, 0, 0, 0.25));
+    display: none !important; 
+}
+.img-coin {
+    position: absolute;
+    left: 50%;
+    bottom: 14%;
+    transform: translateX(-50%);
+    width: 56%;
+    filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.25));
+}
+.img-chicken {
+     position: absolute;
+  left: 25%;         
+  bottom: 10px;       
+  transform: translateX(-50%) scale(0.5); 
+  width: 300px;
+  transition: transform 0.6s ease-out, left 1s ease-out;
+  filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.18));
+}
+
+/* ================== GAME BUTTONS ================== */
+.btn-jump {
+  position: relative;
+    bottom: calc(var(--safe) + -40px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #32CD32;
+    color: #fff;
+    border: 0;
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-weight: 900;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    box-shadow: 0 0 12px rgba(50, 205, 50, 0.6);
+}
+
+
+.btn-tg-fixed {
+    position: fixed;
+    bottom: var(--safe);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #36454F;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 800;
+    z-index: 9;
+    box-shadow: 0 4px 10px rgba(20, 30, 35, 0.5);
+}
+.tg-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ================== MODAL ================== */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: grid;
+    place-items: center;
+}
+.hidden {
+    display: none;
+}
+.modal-card {
+    background: transparent;
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    width: min(92vw, 360px);
+}
+.result {
+    margin: 12px 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 380px) {
+    .t-big,
+    .t-accent {
+        font-size: 32px;
+    }
+    .t-num {
+        font-size: 34px;
+    }
+}
+
+#btn-jump:hover {
+    background: #4dff4d;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4); 
+}
+
+
+
+.lalka04{
+    background: #2f2b28;
+  background-size: cover;
+  padding-bottom: 300px; 
+}
+
+.page {
+ position: absolute;
+  width: 100%;
+  min-height: 5vh;
+  opacity: 0;
+  transform: translateY(50px); 
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease; 
+}
+
+.page.active {
+  opacity: 1;
+  transform: translateY(0); 
+  pointer-events: auto;
+}
+
+.result-img {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+  opacity: 0;
+  transform: scale(0.5);
+  animation: popIn 0.5s forwards;
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background: #2f2b28 !important;  
+  }
+
+  .title{
+    margin-right: -10px;
+  }
+
+  .t-big,
+  .t-accent {
+    
+    font-size: 28px;
+    
+  }
+  .t-num {
+    
+    font-size: 30px;
+  }
+  .t-chick {
+    
+    font-size: 22px;
+  }
+
+  .modes {
+    margin-left: 3px;
+    gap: 8px;
+    margin-top: 70px;
+    
+  }
+  .mode {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .road, .road--app {
+    margin-left: 30px;
+    width: 80%;
+    max-width: 360px;
+    height: 600px;
+    background-size: cover;
+ box-shadow: none !important;
+     border-radius: 12px; 
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15) !important; 
+}
+
+  .img-chicken {
+    width: 180px;
+    bottom: 5px;
+    transform: translateX(-50%) scale(0.4);
+  }
+
+  .btn-jump {
+    margin-left: -8px;
+    font-size: 18px;
+    padding: 12px 20px;
+    bottom: calc(var(--safe) + -50px);
+  }
+
+  .auth-card {
+    margin-top: -20px;
+    width: 85%;
+    padding: 12px;
+  }
+  .auth-card h2 {
+    font-size: 22px;
+  }
+  .auth-input {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+    #app, #gate, .lalka04 {
+      
+  margin: auto !important;
+    margin-bottom: 0 !important;
+    padding-bottom: calc(var(--safe, 10=4px) + 5px) !important;
+    min-height: 60vh !important;
+    height: auto !important;
+   
+
+    
+  }
+
+  #gate{
+   margin-left: 22px !important;
+  }
+
+  
+
+    body::before {
+    content: "";
+    position: relative;
+    display: block;
+    height: 40px; 
+    background: #1e1b19; 
+  }
+  .road {
+    margin-left: 45px;
+    margin-bottom: -5px;
+  }
+
+
+}
+
+
+@media (max-width: 480px) {
+  .t-big,
+  .t-accent {
+    font-size: 24px;
+  }
+  .t-num {
+    font-size: 26px;
+  }
+
+  .road, .road--app {
+    max-width: 300px;
+    height: 420px;
+  }
+
+  .img-chicken {
+    width: 150px;
+    transform: translateX(-50%) scale(0.35);
+  }
+
+  .btn-jump {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+
+  .mode {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+
+
