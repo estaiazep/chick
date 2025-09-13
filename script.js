@@ -118,32 +118,32 @@ window.addEventListener("DOMContentLoaded", () => {
   // ====== ИГРА ======
   const modes = {
     easy: [
-     "fotka 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
     ],
     medium: [
-     "fotka 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
-  ],
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
+    ],
   hard: [
-     "fotka 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
-  ],
+     "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
+    ],
   hardcore: [
-     "fotka 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
+    "280.png",
+     "163.png",
+     "245.png",
+     "222.png",
+     "306.png"
   ]
   };
 
