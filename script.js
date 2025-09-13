@@ -118,32 +118,32 @@ window.addEventListener("DOMContentLoaded", () => {
   // ====== ИГРА ======
   const modes = {
     easy: [
-     "./img/fotka 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
+     "fotka 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
     ],
     medium: [
-     "./img/fotka 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
+     "fotka 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
   ],
   hard: [
-     "./img/fotka 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
+     "fotka 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
   ],
   hardcore: [
-     "./img/fotka 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
-     "./img/94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
+     "fotka 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1.png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (1).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (2).png",
+     "94ee6c03-b84f-47a9-99fc-77842ab12f6b 1 (3).png"
   ]
   };
 
