@@ -44,6 +44,13 @@
     </main>
   </div>
 
+  <!-- Added loading screen -->
+  <div id="loading-screen" class="loading-screen hidden">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <div class="loading-text">LOADING...</div>
+    </div>
+  </div>
 
   <!-- ======== APP (показывается после успешного входа) ======== -->
   <div id="app" class="page">
@@ -85,7 +92,8 @@
    
 
     <div id="modal" class="modal hidden">
-      <div class="modal-card">
+      <!-- Added neon frame around modal card -->
+      <div class="modal-card neon-frame">
         <h3>HACK CR2</h3>
         <div class="result">Next X: <span id="xval">—</span></div>
         <button id="btn-next" class="btn-next">Continue</button>
@@ -96,5 +104,3 @@
   <script src="script.js"></script>
 </body>
 </html>
- 
-
