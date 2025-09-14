@@ -125,11 +125,12 @@ window.addEventListener("DOMContentLoaded", () => {
      "306.png"
     ],
     medium: [
-     "280.png",
-     "163.png",
-     "245.png",
-     "222.png",
-     "306.png"
+     "6.png",
+     "7.png",
+     "8.png",
+     "9.png",
+     "12.png",
+     "11.png"
     ],
   hard: [
      "280.png",
