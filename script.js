@@ -118,11 +118,11 @@ window.addEventListener("DOMContentLoaded", () => {
   // ====== ИГРА ======
   const modes = {
     easy: [
-     "280.png",
-     "163.png",
-     "245.png",
-     "222.png",
-     "306.png"
+     "6-4.jpg",
+     "6-6.jpg",
+     "6-7.jpg",
+     "6-8.jpg",
+     "6-9.jpg"
     ],
     medium: [
      "6.png",
@@ -133,11 +133,10 @@ window.addEventListener("DOMContentLoaded", () => {
      "11.png"
     ],
   hard: [
-     "280.png",
-     "163.png",
-     "245.png",
-     "222.png",
-     "306.png"
+     "6.png",
+     "9.png",
+     "6-5.jpg",
+     "6-3.jpg"
     ],
   hardcore: [
      "280.png",
