@@ -116,18 +116,18 @@ body {
   background: #2f2b28;
 }
 
-.lalka1 {
-  position: absolute;
+.lalka {
+  position: fixed; /* фиксируем относительно окна, а не родителя */
   left: 50%;
-  top: 0.5px;
-  bottom: -75px;
+  bottom: var(--safe); /* отступ от низа с учётом safe area */
   transform: translateX(-50%);
   width: 700px;
-  height: 80px;
-  z-index: 2;
+  max-width: 90%; /* чтобы на маленьких экранах не вылазило */
+  height: 170px;
   border-radius: 10px;
   background: #47413d;
   box-shadow: 0 4px 10px rgba(20, 18, 16, 0.5);
+  z-index: 5; /* чтобы блок был поверх дороги */
 }
 
 #gate,
