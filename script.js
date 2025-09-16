@@ -1,23 +1,14 @@
-
-/* ================== УПРОЩЁННЫЙ АВТОРИЗАТОР ==================
-   - Убраны готовые логины/пароли
-   - Убрана работа с паролем (остается только поле логина, если в HTML есть)
-   - Валидация логина: ровно 10 цифр, первые 3 цифры >= 138
-   - Сохранил механизм сессии (TTL, версия)
-   - Опциональный список BLOCKED оставлен для блокировок по имени
-*/
-
-const BLOCKED       = [];             // список заблокированных логинов (оставил пустым)
-const AUTH_VERSION  = "1";
-const AUTH_TTL_MS   = 10 * 60 * 1000; // 10 минут
-const SESSION_KEY   = "cr2_auth";
-
+/************* НАСТРОЙКИ *************/
+const PASS = "7777"; // общий пароль
+const BLOCKED = ["baduser"];
+const AUTH_VERSION = "1";
+const AUTH_TTL_MS = 10 * 60 * 1000;
+const SESSION_KEY = "cr2_auth";
+/*************************************/
 function setAuthed(v, user){
   try {
     if (v) {
-      localStorage.setItem(SESSION_KEY, JSON.stringify({
-        u: user, t: Date.now(), v: AUTH_VERSION
-      }));
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ u: user, t: Date.now(), v: AUTH_VERSION }));
     } else {
       localStorage.removeItem(SESSION_KEY);
     }
@@ -28,7 +19,9 @@ function readSession(){
     const raw = localStorage.getItem(SESSION_KEY);
     if (!raw) return null;
     return JSON.parse(raw);
-  } catch(e){ return null; }
+  } catch(e){
+    return null;
+  }
 }
 function isAuthedFresh(){
   const s = readSession();
@@ -38,86 +31,56 @@ function isAuthedFresh(){
   if (Date.now() - s.t > AUTH_TTL_MS) return false;
   return true;
 }
-
 function showGate() {
-  const g = document.getElementById("gate");
-  const a = document.getElementById("app");
-  if (g) g.classList.add("active");
-  if (a) a.classList.remove("active");
+  document.getElementById("gate").classList.add("active");
+  document.getElementById("app").classList.remove("active");
 }
-
 function showApp() {
-  const g = document.getElementById("gate");
-  const a = document.getElementById("app");
-  if (a) a.classList.add("active");
-  if (g) g.classList.remove("active");
+  document.getElementById("app").classList.add("active");
+  document.getElementById("gate").classList.remove("active");
 }
-
 window.addEventListener("DOMContentLoaded", () => {
-  if (isAuthedFresh()) showApp(); else showGate();
-});
-
-// ====== GATE ======
-const form       = document.getElementById("gate-form");
+  if (isAuthedFresh()) showApp(); else showGate()}
+);
+// ====== GATE (EN) ======
+const form = document.getElementById("gate-form");
 const loginInput = document.getElementById("login");
-const errBox     = document.getElementById("gate-error");
+const passInput = document.getElementById("password");
+const errBox = document.getElementById("gate-error");
+const getDataBtn = document.getElementById("get-data");
 
-// Валидация логина: ровно 10 цифр и первые 3 цифры (как число) >= 138
-function validateLogin(login){
-  if (!login) return false;
-  // только цифры
+function isValidLogin(login){
+  // только цифры и длина 10
   if (!/^\d{10}$/.test(login)) return false;
-  const prefix = parseInt(login.slice(0,3), 10);
-  if (Number.isNaN(prefix)) return false;
-  if (prefix < 138) return false; // "начинаются на 138 и выше"
-  return true;
+  // преобразуем в число и проверим >= 1380000000
+  return Number(login) >= 1380000000;
 }
 
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const login = (loginInput.value || "").trim();
-
-    const ok = validateLogin(login);
-
+    const pass = (passInput.value || "");
+    
+    const ok = isValidLogin(login) && pass === PASS;
     if (!ok) {
-      if (errBox) {
-        errBox.textContent = "Invalid login — must be 10 digits, starting with 138 or higher";
-        errBox.hidden = false;
-        setTimeout(() => { if (errBox) errBox.hidden = true; }, 2000);
-      }
+      errBox.hidden = false;
+      setTimeout(() => errBox.hidden = true, 2000);
       return;
     }
-
     if (BLOCKED.includes(login)) {
-      if (errBox) {
-        errBox.textContent = "Access denied";
-        errBox.hidden = false;
-        setTimeout(() => { if (errBox) { errBox.hidden = true; errBox.textContent = ""; } }, 2000);
-      }
+      errBox.textContent = "Access denied";
+      errBox.hidden = false;
+      setTimeout(() => {
+        errBox.hidden = true;
+        errBox.textContent = "Invalid login or password";
+      }, 2000);
       return;
     }
-
     setAuthed(true, login);
     showApp();
   });
 }
-
-// Утилита: выход из сессии
-function logout(){
-  setAuthed(false);
-  showGate();
-}
-
-// Экспортим для использования в консоли/HTML (опционально)
-window.authUtils = { validateLogin, logout, isAuthedFresh };
-
-  
-  if (getDataBtn) {
-    getDataBtn.addEventListener("click", (e) => {
-      
-    });
-  }
 
   // ====== ИГРА ======
   const modes = {
