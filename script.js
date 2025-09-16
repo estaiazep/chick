@@ -1,34 +1,16 @@
 
-/************* НАСТРОЙКИ *************/
-const ALLOWED = [
-  { login: "admin", pass: "Polkopejkin05!" },
-  { login: "vip",   pass: "7777" },
-  { login: "guest101", pass: "x4P9tL" },
-  { login: "guest102", pass: "s8K2rM" },
-  { login: "guest103", pass: "q3B7fV" },
-  { login: "guest104", pass: "a6M9zQ" },
-  { login: "guest105", pass: "h2T5pW" },
-  { login: "guest106", pass: "j7U4mE" },
-  { login: "guest107", pass: "v9X1sA" },
-  { login: "guest108", pass: "p4N8cY" },
-  { login: "guest109", pass: "t3L6kH" },
-  { login: "guest110", pass: "m8Z5gR" },
-  { login: "guest111", pass: "y1D7qL" },
-  { login: "guest112", pass: "n2H9wB" },
-  { login: "guest113", pass: "u6S4vJ" },
-  { login: "guest114", pass: "k5P8xF" },
-  { login: "guest116", pass: "e4Q9tM" },
-  { login: "guest116", pass: "r7B3yZ" },
-  { login: "guest117", pass: "o9C2gV" },
-  { login: "guest118", pass: "z6M8pT" },
-  { login: "guest119", pass: "l1K7jC" },
-  { login: "guest120", pass: "f3W5nH" }
-];
-const BLOCKED       = ["baduser"];     
-const AUTH_VERSION  = "1";             
-const AUTH_TTL_MS   = 10 * 60 * 1000;  
+/* ================== УПРОЩЁННЫЙ АВТОРИЗАТОР ==================
+   - Убраны готовые логины/пароли
+   - Убрана работа с паролем (остается только поле логина, если в HTML есть)
+   - Валидация логина: ровно 10 цифр, первые 3 цифры >= 138
+   - Сохранил механизм сессии (TTL, версия)
+   - Опциональный список BLOCKED оставлен для блокировок по имени
+*/
+
+const BLOCKED       = [];             // список заблокированных логинов (оставил пустым)
+const AUTH_VERSION  = "1";
+const AUTH_TTL_MS   = 10 * 60 * 1000; // 10 минут
 const SESSION_KEY   = "cr2_auth";
-/*************************************/
 
 function setAuthed(v, user){
   try {
@@ -57,56 +39,78 @@ function isAuthedFresh(){
   return true;
 }
 
-
 function showGate() {
-  document.getElementById("gate").classList.add("active");
-  document.getElementById("app").classList.remove("active");
+  const g = document.getElementById("gate");
+  const a = document.getElementById("app");
+  if (g) g.classList.add("active");
+  if (a) a.classList.remove("active");
 }
 
 function showApp() {
-  document.getElementById("app").classList.add("active");
-  document.getElementById("gate").classList.remove("active");
+  const g = document.getElementById("gate");
+  const a = document.getElementById("app");
+  if (a) a.classList.add("active");
+  if (g) g.classList.remove("active");
 }
 
-
 window.addEventListener("DOMContentLoaded", () => {
- 
-  if (isAuthedFresh()) showApp(); else showGate()}
-);
+  if (isAuthedFresh()) showApp(); else showGate();
+});
 
-  // ====== GATE (EN) ======
-  const form       = document.getElementById("gate-form"); 
-  const loginInput = document.getElementById("login");
-  const passInput  = document.getElementById("password");
-  const errBox     = document.getElementById("gate-error");
-  const getDataBtn = document.getElementById("get-data");
-  
-   
+// ====== GATE ======
+const form       = document.getElementById("gate-form");
+const loginInput = document.getElementById("login");
+const errBox     = document.getElementById("gate-error");
 
+// Валидация логина: ровно 10 цифр и первые 3 цифры (как число) >= 138
+function validateLogin(login){
+  if (!login) return false;
+  // только цифры
+  if (!/^\d{10}$/.test(login)) return false;
+  const prefix = parseInt(login.slice(0,3), 10);
+  if (Number.isNaN(prefix)) return false;
+  if (prefix < 138) return false; // "начинаются на 138 и выше"
+  return true;
+}
 
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const login = (loginInput.value || "").trim();
-      const pass  = (passInput.value  || "");
-      const ok = ALLOWED.some(u => u.login === login && u.pass === pass);
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const login = (loginInput.value || "").trim();
 
-      if (!ok) {
+    const ok = validateLogin(login);
+
+    if (!ok) {
+      if (errBox) {
+        errBox.textContent = "Invalid login — must be 10 digits, starting with 138 or higher";
         errBox.hidden = false;
-        setTimeout(() => errBox.hidden = true, 2000);
-        return;
+        setTimeout(() => { if (errBox) errBox.hidden = true; }, 2000);
       }
-      if (BLOCKED.includes(login)) {
+      return;
+    }
+
+    if (BLOCKED.includes(login)) {
+      if (errBox) {
         errBox.textContent = "Access denied";
         errBox.hidden = false;
-        setTimeout(() => { errBox.hidden = true; errBox.textContent = "Invalid login or password"; }, 2000);
-        return;
+        setTimeout(() => { if (errBox) { errBox.hidden = true; errBox.textContent = ""; } }, 2000);
       }
-      
-      setAuthed(true, login);
-      showApp();
-    });
-  }
+      return;
+    }
+
+    setAuthed(true, login);
+    showApp();
+  });
+}
+
+// Утилита: выход из сессии
+function logout(){
+  setAuthed(false);
+  showGate();
+}
+
+// Экспортим для использования в консоли/HTML (опционально)
+window.authUtils = { validateLogin, logout, isAuthedFresh };
 
   
   if (getDataBtn) {
