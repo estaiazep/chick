@@ -11,7 +11,7 @@ const UNLOCK_KEY = "cr2_unlocked" // ключ для localStorage
 function setAuthed(v, user) {
   try {
     if (v) {
-      localStorage.setItem(SESSION_KEY, JSON.stringify({ u: user, t: Date.now(), v: AUTH_VERSION }))
+      localStorage.setItem(SESSION_KEY, user + "|" + Date.now() + "|" + AUTH_VERSION)
     } else {
       localStorage.removeItem(SESSION_KEY)
     }
@@ -22,7 +22,9 @@ function readSession() {
   try {
     const raw = localStorage.getItem(SESSION_KEY)
     if (!raw) return null
-    return JSON.parse(raw)
+    const parts = raw.split("|")
+    if (parts.length !== 3) return null
+    return { u: parts[0], t: Number.parseInt(parts[1]), v: parts[2] }
   } catch (e) {
     return null
   }
@@ -53,10 +55,14 @@ function setUnlocked() {
 
 function showUnlockModal() {
   document.getElementById("unlock-modal").classList.remove("hidden")
+  document.getElementById("btn-jump").disabled = true
+  document.querySelectorAll(".mode").forEach((btn) => (btn.disabled = true))
 }
 
 function hideUnlockModal() {
   document.getElementById("unlock-modal").classList.add("hidden")
+  document.getElementById("btn-jump").disabled = false
+  document.querySelectorAll(".mode").forEach((btn) => (btn.disabled = false))
 }
 
 function showGate() {
