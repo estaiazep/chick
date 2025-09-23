@@ -152,10 +152,10 @@ if (unlockCodeInput) {
 
 // ====== ИГРА ======
 const modes = {
-  easy: ["6-4.jpg", "6-6.jpg", "6-7.jpg", "6-8.jpg", "6-9.jpg"],
-  medium: ["9.png"],
-  hard: ["6.png", "9.png", "6-5.jpg", "6-3.jpg"],
-  hardcore: ["280.png", "163.png", "245.png", "222.png", "306.png"],
+  easy: ["1 12 (1).png", "1 17 (1).png", "1 23 (1).png", "1 29 (1).png", "1 36 (1).png", "1 44 (1).png"],
+  medium: ["1 12 (1).png", "1 28 (1).png", "1 47 (1).png", "1 70 (1).png"],
+  hard: ["1 23 (1).png", "1 55 (1).png", "1 98 (1).png"],
+  hardcore: [],
 }
 
 let currentMode = "easy"
