@@ -153,7 +153,7 @@ if (unlockCodeInput) {
 // ====== ИГРА ======
 const modes = {
   easy: ["1 12 (1).png", "1 17 (1).png", "1 23 (1).png", "1 29 (1).png", "1 36 (1).png", "1 44 (1).png"],
-  medium: ["1 12 (1).png", "1 28 (1).png", "1 47 (1).png", "1 70 (1).png"],
+  medium: ["1 28 (1).png", "1 47 (1).png", "1 70 (1).png, "1 98 (1).png""],
   hard: ["1 23 (1).png", "1 55 (1).png", "1 98 (1).png"],
   hardcore: [],
 }
