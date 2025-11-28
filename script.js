@@ -153,9 +153,40 @@ if (unlockCodeInput) {
 // ====== ИГРА ======
 const modes = {
   easy: ["1 12 (1).png", "1 17 (1).png", "1 23 (1).png", "1 29 (1).png", "1 36 (1).png", "1 44 (1).png"],
-  medium: ["1 28 (1).png", "1 47 (1).png", "1 70 (1).png, "1 98 (1).png""],
+  medium: ["1 28 (1).png", "1 47 (1).png", "1 70 (1).png", "1 98 (1).png"],
   hard: ["1 23 (1).png", "1 55 (1).png", "1 98 (1).png"],
   hardcore: [],
+}
+
+// ==== ХРАНИМ, КАКИЕ КАРТИНКИ УЖЕ ПОКАЗАНЫ ====
+let usedImages = {
+  easy: [],
+  medium: [],
+  hard: [],
+  hardcore: []
+}
+
+// ==== ФУНКЦИЯ УНИКАЛЬНОГО ВЫБОРА КАРТИНКИ ====
+function getUniqueImage(mode) {
+  const arr = modes[mode]
+  let used = usedImages[mode]
+
+  // если все картинки показаны → сбрасываем
+  if (used.length === arr.length) {
+    usedImages[mode] = []
+    used = usedImages[mode]
+  }
+
+  // доступные (непоказанные)
+  const available = arr.filter(img => !used.includes(img))
+
+  // случайный выбор
+  const x = available[Math.floor(Math.random() * available.length)]
+
+  // добавить в список использованных
+  usedImages[mode].push(x)
+
+  return x
 }
 
 let currentMode = "easy"
@@ -179,8 +210,8 @@ btnJump?.addEventListener("click", () => {
   setTimeout(() => {
     chicken.style.transform = "translate(-50%,0) scale(0.5)"
 
-    const arr = modes[currentMode] || modes.easy
-    const x = arr[Math.floor(Math.random() * arr.length)]
+    // ТУТ УНИКАЛЬНЫЙ ВЫБОР
+    const x = getUniqueImage(currentMode)
     xVal.innerHTML = `<img src="${x}" alt="result" class="result-img">`
 
     modal.classList.remove("hidden")
